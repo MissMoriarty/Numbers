@@ -1,5 +1,5 @@
 
-# Numbers - Guía de Tipos Numéricos en C#
+# Guía de tipos numéricos en C#
 
 Este proyecto es una aplicación de consola en **C# (.NET)** diseñada como una referencia práctica y educativa sobre el sistema de tipos numéricos, operadores aritméticos y formatos de cadena en el ecosistema .NET.
 
@@ -14,30 +14,30 @@ El código fuente incluye explicaciones detalladas en los comentarios y ejemplos
 * **Alta Precisión:** `decimal` para aplicaciones financieras.
 
 
-* **Manejo de Excepciones:**
+* **Manejo de excepciones:**
 * Uso del bloque `checked` para detectar **Overflow** (desbordamiento) y **Underflow**.
 * Comportamiento de tipos enteros vs. flotantes ante desbordamientos (Wrap around vs. Infinity).
 
 
-* **Casos Especiales:**
-* Manejo de **División por Cero** (`DivideByZeroException` vs. `Infinity`).
+* **Casos especiales:**
+* Manejo de **División por cero** (`DivideByZeroException` vs. `Infinity`).
 * Valores **NaN** (Not a Number).
 
 
-* **Formato de Cadenas:**
+* **Formato de cadenas:**
 * Uso de `ToString()` con especificadores (Moneda `C`, Porcentaje `P`, Fecha `dd/MM/yyyy`).
 * `String.Format` y la moderna **Interpolación de cadenas** (`$"{var}"`).
 
 
 
-## 🛠️ Tecnologías
+## Tecnologías
 
 * **Lenguaje:** C#
 * **Framework:** .NET 10.0 (según configuración del proyecto)
 * **Tipo de Proyecto:** Aplicación de Consola
 
 
-## 💻 Instalación y Ejecución
+## Instalación y Ejecución
 
 1. **Clonar el repositorio:**
 ```bash
@@ -60,13 +60,7 @@ dotnet run
 ```
 
 
-
-## 📄 Estructura del Código
-
-* `Program.cs`: Contiene toda la lógica, ejemplos y documentación teórica en comentarios.
-* `numbers.csproj`: Archivo de definición del proyecto .NET.
-
-## 🤝 Contribución
+##  Contribución
 
 Si encuentras algún error en los ejemplos o quieres agregar más casos de uso sobre tipos numéricos, ¡siéntete libre de abrir un Pull Request!
 

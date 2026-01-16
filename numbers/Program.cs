@@ -17,6 +17,8 @@ OPERADORES SUFIJOS:
     y luego se incrementa o decrementa su valor.
 */
 
+using System.Timers;
+
 int value = 1;
 value++;
 Console.WriteLine("First: " + value); //2
@@ -71,6 +73,22 @@ F o f,      tipo: float,     ejemplo: 3.14F
 
 -----------------------------------------------------------------------------
 
+TIPOS DE DATOS POR DEFECTO:
+Números enteros: int
+Números de punto flotante: double
+
+Por ejemplo: La división de dos enteros (9 y 2) trunca el resultado decimal resultando en 4. 
+Luego, ese 4 se convierte implícitamente a double (4.0).
+*/
+double Resultado = 9 / 2;
+Console.WriteLine(Resultado); // Imprime
+
+double ResultadoCorrecto = 9.0 / 2.0;
+Console.WriteLine(ResultadoCorrecto); // Imprime 4.5
+
+
+/*-----------------------------------------------------------------------------
+
 MANEJO DE ERRORES O EXCEPCIONES:
 
 OverflowException:
@@ -79,7 +97,7 @@ Se lanza cuando una operación aritmética produce un resultado que es muy grand
 Overflow en enteros:
 Por defecto, C# no lanza error en overflow de enteros (int, long, short, byte, etc.), 
 simplemente "da la vuelta" (wraps around). 
-Para evitar esto, usa el bloque checked.
+Para evitar esto, usa el bloque checked que fuerza al código a lanzar un error.
 */
 
 int Max = int.MaxValue;
@@ -124,7 +142,7 @@ Se lanza cuando una operación aritmética produce un resultado que es demasiado
 
 Underflow en enteros:
 Si restas 1 a MinValue , el valor salta a MaxValue (wraps around). 
-Para evitar esto, usa el bloque checked.
+Para evitar esto, usa el bloque checked que fuerza al código a lanzar un error.
 */
 int Min = int.MinValue;
 int Under = Min - 1; // Aquí NO lanzará excepción, simplemente "da la vuelta"
@@ -162,16 +180,13 @@ if(ceroDec == 0)
 DIVISIÓN POR CERO
 
 Enteros: Lanza la excepción: DivideByZeroException
-Para evitar esto, usa el bloque checked.
 */
-
 try
 {
-    checked
-    {
-        int dividendo = 13;
-        int resultadoDiv = dividendo / 0; // Aquí lanzará DivideByZeroException
-    }
+    
+    int dividendo = 13;
+    int resultadoDiv = dividendo / 0; // Aquí lanzará DivideByZeroException
+    
 }
 catch (Exception ex)
 {
@@ -179,7 +194,7 @@ catch (Exception ex)
 }
 
 /*Punto flotante: No lanza excepción, el resultado es Infinity o NaN
-Para evitar esto, verifica el divisor antes de la división o usa el bloque checekd.
+Para evitar esto, verifica el divisor antes de la división o usa .Is Infinity o .IsNaN
 */
 
 double x = 10.0;
@@ -187,6 +202,28 @@ double y = 0.0;
 double z = x / y; // Resultado: Infinity (No rompe el programa)
 if(double.IsInfinity(z) || double.IsNaN(z))
     Console.WriteLine("¡No se puede dividir por cero!");
+
+
+/*-----------------------------------------------------------------------------------
+NOT A NUMBER (NaN):
+NaN significa "Not a Number" y representa un valor indefinido o no representable en operaciones con números float y double).
+
+Operaciones que producen NaN:
+División 0.0 / 0.0
+Math.Sqrt de un número negativo
+Operaciones con NaN (cualquier cálculo con NaN produce NaN)
+
+No lanza excepción por lo que es importante validar con .IsNaN
+*/
+float DivNotNumber = 0.0f;
+float divNotNumber = 0.0f;
+Console.WriteLine(DivNotNumber / divNotNumber); //Imprime NaN
+
+float raiz = -98.8f;
+float result = (float)Math.Sqrt(raiz);
+if(float.IsNaN(result))
+    Console.WriteLine("El resultado no corresponde a un número"); //Se maneja la excepción
+
 
 /*-----------------------------------------------------------------------------------
 FORMATO DE CADENAS (TO STRING):
@@ -231,4 +268,3 @@ DateTime fecha = DateTime.Now;
 
 string texto = $"Temperatura: {temperatura:N1}°C - Fecha: {fecha:dddd, dd MMMM yyyy}"; 
 Console.WriteLine(texto);
-
